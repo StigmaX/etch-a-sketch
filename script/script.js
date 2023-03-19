@@ -12,6 +12,26 @@ document.body.onmousedown = () => mousePressed = true;
 document.body.onmouseup = () => mousePressed = false;
 
 
+const chooseColor = document.querySelector('#chooseColor');
+const ranibowColor = document.querySelector('#rainbowColor');
+const clearColor = document.querySelector('#clearColor');
+let mode;
+
+function changeStatus(action) {
+    newMode(action);
+    mode = action;
+}
+
+function newMode(color){
+    return color;
+}
+
+chooseColor.addEventListener('click', () => changeStatus('mono'))
+ranibowColor.addEventListener('click', () => changeStatus('rainbow'))
+clearColor.addEventListener('click', () => {
+    grid.innerText = '';
+    setupSketch(slider.value);
+})
 
 function setupSketch(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -38,7 +58,15 @@ color.addEventListener('change', (Event) => {
 
 function changeColor(e) {
     if(e.type === 'mouseover' && !mousePressed) return;
-
+    if(mode === 'mono') {
+        e.target.style.backgroundColor = currentColor;
+    }
+    else if(mode === 'rainbow') {
+        let red = Math.floor(Math.random() * 256);
+        let green = Math.floor(Math.random() * 256);
+        let blue = Math.floor(Math.random() * 256);
+        e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    }
     else e.target.style.backgroundColor = '#000000';
 
 }
