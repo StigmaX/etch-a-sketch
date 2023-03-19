@@ -23,7 +23,14 @@ function changeStatus(action) {
 }
 
 function newMode(color){
-    return color;
+    if(color === 'mono') {
+        chooseColor.classList.add('activated');
+        ranibowColor.classList.remove('activated');
+    }
+    else if(color === 'rainbow') {
+        ranibowColor.classList.add('activated');
+        chooseColor.classList.remove('activated');
+    }
 }
 
 chooseColor.addEventListener('click', () => changeStatus('mono'))

@@ -79,8 +79,12 @@ input[type='color']::-webkit-color-swatch-wrapper {
     background-color: #850909;
 }
 
-button.clicked {
+#container #navigation button.clicked {
     background-color: #850909;
+}
+
+#container #navigation button.activated {
+    background-color: #000000;
 }
 
 .slider {
@@ -117,4 +121,17 @@ button.clicked {
     cursor: pointer;
   }
 
+  #footer {
+    display: flex;
+    justify-content:center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 10px;
+    border-top: 1px solid black;
+  }
+
+  #footer span {
+    font-size: 20px;
+  }
   
